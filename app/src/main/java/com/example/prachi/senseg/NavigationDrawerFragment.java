@@ -1,5 +1,6 @@
 package com.example.prachi.senseg;
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -21,6 +22,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.content.Intent;
+
+import static com.example.prachi.senseg.MainActivity.*;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -201,6 +205,7 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         //add if statements to open new xml files based on where the position clicked is
+        //but first make the files
     }
 
     @Override
@@ -275,7 +280,7 @@ public class NavigationDrawerFragment extends Fragment {
     /**
      * Callbacks interface that all activities using this fragment must implement.
      */
-    public static interface NavigationDrawerCallbacks {
+    public interface NavigationDrawerCallbacks {
         /**
          * Called when an item in the navigation drawer is selected.
          */

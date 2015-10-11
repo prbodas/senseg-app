@@ -1,6 +1,7 @@
 package com.example.prachi.senseg;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,8 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+//import com.senseg.haptics.Grain;
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -48,23 +51,25 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        Intent inn1 = new Intent(this, Display1.class);
+        this.startActivity(inn1);
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
+        //FragmentManager fragmentManager = getSupportFragmentManager();
+        //fragmentManager.beginTransaction()
+                //.replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                //.commit();
     }
 
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle = "Bumpy fragment";
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+                mTitle = "Section 2";
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+                mTitle = "Section 3";
                 break;
         }
     }
