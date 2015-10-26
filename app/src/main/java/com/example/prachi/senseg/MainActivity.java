@@ -51,13 +51,26 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        Intent inn1 = new Intent(this, Display1.class);
-        this.startActivity(inn1);
-        // update the main content by replacing fragments
-        //FragmentManager fragmentManager = getSupportFragmentManager();
-        //fragmentManager.beginTransaction()
-                //.replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                //.commit();
+        if (position == 1) {
+            Intent inn1 = new Intent(this, Display1.class);
+            this.startActivity(inn1);
+        }else if (position == 2)
+        {
+            Intent inn2 = new Intent(this, Display2.class);
+            this.startActivity(inn2);
+        }else if (position == 0)
+        {
+            Intent inn0 = new Intent(this, DisplayButton.class);
+            //TODO:replace Display2.class with the real class needed
+            this.startActivity(inn0);
+        }
+        /*
+        update the main content by replacing fragments
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+        .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+        .commit();
+        */
     }
 
     public void onSectionAttached(int number) {

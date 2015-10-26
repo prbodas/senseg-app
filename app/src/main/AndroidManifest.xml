@@ -21,6 +21,12 @@
             android:name=".Display1"
             android:label="@string/title_activity_display1" >
         </activity>
+        <activity
+            android:name=".Display2">
+        </activity>
+        <activity
+            android:name=".DisplayButton">
+        </activity>
     </application>
 
 </manifest>
