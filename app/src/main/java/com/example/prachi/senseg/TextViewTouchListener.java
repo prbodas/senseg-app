@@ -18,6 +18,7 @@ public class TextViewTouchListener implements View.OnTouchListener{
     public static int ycoord = -1;
     public boolean firstpress = true;
     public boolean dragging = false;
+    //TODO:
 
 
     public boolean onTouch(View v, MotionEvent event) {

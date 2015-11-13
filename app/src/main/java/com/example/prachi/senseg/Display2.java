@@ -17,10 +17,13 @@ public class Display2 extends ActionBarActivity {
     /*notes on the xml file
     * 1920x1200 pixel display TODO*/
 
-    public static String grain1 = Grain.GRAIN_AREA_BUMPY;
-    public static float intensity1 = 1.0f;
+    //TODO: set up board with stripes and gradient, play with stripe width
+    //TODO: change gradient based on x direction and x movement
+
+    public static String grain1 = Grain.GRAIN_AREA_SMOOTH;
+    public static float intensity1 = 1.0f; //pink
     public static String grain2 = Grain.GRAIN_AREA_SMOOTH;
-    public static float intensity2 = 1.0f;
+    public static float intensity2 = 0.2f; //blue
     //TODO: make private and add getter and setter methods
 
     public static final int ROWS = 8;

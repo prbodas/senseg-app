@@ -84,6 +84,7 @@ public class TextViewTouch extends TextView {
         pressed = true;
         grain.play(intensity);
         setBackgroundResource(0);
+        Log.d("str", ""+ intensity);
     }
 
     public void unpress()
