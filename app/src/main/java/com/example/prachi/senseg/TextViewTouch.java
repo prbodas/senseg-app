@@ -6,7 +6,7 @@ import android.widget.TextView;
 import android.view.MotionEvent;
 import com.senseg.haptics.Grain;
 
-import static com.example.prachi.senseg.Display2.*;
+import static com.example.prachi.senseg.DisplayButton.*;
 
 
 /**
@@ -34,10 +34,18 @@ public class TextViewTouch extends TextView {
             grain = new Grain(grain1);
             intensity = intensity1;
             setBackgroundResource(R.drawable.pink);
-        }else{
+        }else if (grainNum == 1){
             grain = new Grain(grain2);
             intensity = intensity2;
             setBackgroundResource(R.drawable.blue);
+        }else{
+            //setBackgroundResource(R.drawable.blue);
+            String s = (grainNum-2+1)+"";
+            setText(s);
+            setTextSize(84.0f);
+            grain = new Grain(grain1);
+            intensity = intensity1;
+            //setBackgroundResource(R.drawable.pink);
         }
         //Log.d("str","In constructor");
 
@@ -56,7 +64,7 @@ public class TextViewTouch extends TextView {
     }
 
 
-    /*public boolean onTouchEvent(MotionEvent event)
+    public boolean onTouchEvent(MotionEvent event)
     {
         if (!pressed)
         {
@@ -77,10 +85,20 @@ public class TextViewTouch extends TextView {
         press();
 
         return true;
-    } */
+    }
 
     public void press()
     {
+        if (grain_number != 0 && grain_number != 1)
+        {
+            pressed = true;
+            float newintensity = intensity*((xcoord%COLS)/COLS);
+            grain.play(1.0f);
+            setTextSize(60.0f);
+            return;
+
+            //setBackgroundResource(0);
+        }
         pressed = true;
         grain.play(intensity);
         setBackgroundResource(0);
@@ -96,10 +114,13 @@ public class TextViewTouch extends TextView {
         {
             grain = new Grain(grain1);
             setBackgroundResource(R.drawable.pink);
-        }else
+        }else if (grain_number == 1)
         {
             grain = new Grain(grain2);
             setBackgroundResource(R.drawable.blue);
+        }else{
+            grain = new Grain(grain1);
+            setTextSize(84.0f);
         }
     }
 }

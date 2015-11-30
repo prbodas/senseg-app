@@ -18,6 +18,7 @@ public class TextViewTouchListener implements View.OnTouchListener{
     public static int ycoord = -1;
     public boolean firstpress = true;
     public boolean dragging = false;
+
     //TODO:
 
 
@@ -92,7 +93,7 @@ public class TextViewTouchListener implements View.OnTouchListener{
 
     public static int toIndex (int x, int y)
     {
-        return x*Display2.COLS + y;
+        return x*DisplayButton.COLS + y;
     }
 
     public void changePosition(TextViewTouch t)
@@ -108,7 +109,7 @@ public class TextViewTouchListener implements View.OnTouchListener{
 
     public static boolean coordsInBounds (int x, int y)
     {
-        return (0 <= x && 0 <= y && x < Display2.COLS && y < Display2.ROWS);
+        return (0 <= x && 0 <= y && x < DisplayButton.COLS && y < DisplayButton.ROWS);
     }
 
 }
