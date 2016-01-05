@@ -9,20 +9,29 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.MotionEvent;
 import android.view.*;
 
+//import java.util.Timer;
+
 public class Display1 extends ActionBarActivity {
 
-    float currentX = 0;
-    float currentY = 0;
-    public static String grain1type = Grain.GRAIN_AREA_SMOOTH;
+    float currentX = 0; //represents the x coordinate of the touch
+    float currentY = 0; //y coordinate of touch
+
+    public static String grain1type = Grain.GRAIN_AREA_SMOOTH; //grain of "black squares"
     public static float intensity1 = 1.0f;
-    public static String grain2type = Grain.GRAIN_AREA_SMOOTH;
+
+    public static String grain2type = Grain.GRAIN_AREA_SMOOTH; //grain of "white square"
     public static float intensity2 = 0.2f;
-    Grain grain = null;
+
+    Grain grain = null; //used to set current grain in code
+
+    //Timer timer; //timer to calculate position based on velocity
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display1);
+        //timer = new Timer();
     }
 
     private static final String DEBUG_TAG = "Velocity";
@@ -34,9 +43,11 @@ public class Display1 extends ActionBarActivity {
         int action = event.getActionMasked();
         int pointerId = event.getPointerId(index);
 
+        //current X and current Y of touch
         currentX = event.getX();
         currentY = event.getY();
 
+        //DEBUG
         Log.d("X position", ""+currentX);
         Log.d("Y position", ""+currentY);
 
@@ -78,12 +89,14 @@ public class Display1 extends ActionBarActivity {
                     grain = new Grain(grain1type);
                     grain.play(intensity1);
                     Log.d("Direction:", "Bottom left");
+                    //TODO: abstract gradient intensity based on position
                 }else if (xVelocity > 0 && yVelocity < 0)
                 {
                     grain = null;
                     grain = new Grain(grain2type);
                     grain.play(intensity2);
                     Log.d("Direction:", "Top right");
+                    //TODO: abstract gradient intensity based on position
                 }else{
                     grain = null;
                     grain = new Grain(grain1type);

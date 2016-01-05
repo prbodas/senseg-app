@@ -46,7 +46,7 @@ public class Display2 extends ActionBarActivity {
             //adding fourth row
             for (int j = 0; j < COLS; j++)
             {
-                rel.addView(new TextViewTouch(this,q,i,j));
+                //rel.addView(new TextViewTouch(this,q,i,j));
                 //Log.d("added", i + " " + j);
                 if (q == 0){q = 1;}else{q = 0;}
             }

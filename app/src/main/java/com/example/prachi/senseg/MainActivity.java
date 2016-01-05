@@ -37,31 +37,38 @@ public class MainActivity extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        Intent inn0 = new Intent(this, GridClient.class);
+        this.startActivity(inn0);
+        //setContentView(R.layout.activity_main);
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
+        /*mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
+                (DrawerLayout) findViewById(R.id.drawer_layout));*/
     }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         if (position == 1) {
-            Intent inn1 = new Intent(this, Display1.class);
-            this.startActivity(inn1);
+            //Intent inn1 = new Intent(this, Display1.class);
+            //this.startActivity(inn1);
+            Intent inn0 = new Intent(this, GridClient.class);
+            this.startActivity(inn0);
         }else if (position == 2)
         {
-            Intent inn2 = new Intent(this, Display2.class);
-            this.startActivity(inn2);
+            //Intent inn2 = new Intent(this, Display2.class);
+            //Intent inn2 = new Intent(this, DragDrop.class);
+            //this.startActivity(inn2);
+            Intent inn0 = new Intent(this, GridClient.class);
+            this.startActivity(inn0);
         }else if (position == 0)
         {
-            Intent inn0 = new Intent(this, DisplayButton.class);
-            //TODO:replace Display2.class with the real class needed
+            //Intent inn0 = new Intent(this, DisplayButton.class);
+            Intent inn0 = new Intent(this, GridClient.class);
             this.startActivity(inn0);
         }
         /*
@@ -88,10 +95,10 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void restoreActionBar() {
-        ActionBar actionBar = getSupportActionBar();
+        /*ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+        actionBar.setTitle(mTitle);*/
     }
 
     /**

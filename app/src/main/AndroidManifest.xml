@@ -27,6 +27,9 @@
         <activity
             android:name=".DisplayButton">
         </activity>
+        <activity
+            android:name=".GridClient">
+        </activity>
     </application>
 
 </manifest>

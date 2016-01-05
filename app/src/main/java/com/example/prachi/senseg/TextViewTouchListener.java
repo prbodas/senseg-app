@@ -12,15 +12,13 @@ import org.w3c.dom.Text;
 /**
  * Created by Prachi on 10/25/15.
  */
-public class TextViewTouchListener implements View.OnTouchListener{
+//public class TextViewTouchListener implements View.OnTouchListener{
 
-    public static int xcoord = -1;
+   /* public static int xcoord = -1;
     public static int ycoord = -1;
     public boolean firstpress = true;
     public boolean dragging = false;
-
-    //TODO:
-
+    //public Class sourceClass = Display1;
 
     public boolean onTouch(View v, MotionEvent event) {
         Log.d("str","Inmethod");
@@ -33,7 +31,6 @@ public class TextViewTouchListener implements View.OnTouchListener{
 
         iteratePositions(t,event.getX(), event.getY());
 
-
         return true;
     }
 
@@ -43,10 +40,10 @@ public class TextViewTouchListener implements View.OnTouchListener{
     {
         Log.d("str",  "You click at x = " + event.getX() + " and y = " + event.getY());
     }*/
-        //return true;
+        //return true;*/
 
 
-    public void iteratePositions(TextViewTouch t, float x, float y)
+    /*public void iteratePositions(TextViewTouch t, float x, float y)
     // t xcoord is equal to x coord, same for ycoord
     {
         //int x = (xcoord*TextViewTouch.WIDTH + (int)newX)/TextViewTouch.WIDTH;
@@ -110,6 +107,6 @@ public class TextViewTouchListener implements View.OnTouchListener{
     public static boolean coordsInBounds (int x, int y)
     {
         return (0 <= x && 0 <= y && x < DisplayButton.COLS && y < DisplayButton.ROWS);
-    }
+    }*/
 
-}
+//}

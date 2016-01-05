@@ -40,7 +40,7 @@ public class DisplayButton extends ActionBarActivity{
         for (int i = 0; i < ROWS; i++) {
             //adding fourth row
             for (int j = 0; j < COLS; j++) {
-                rel.addView(new TextViewTouch(this, i*ROWS+j+2, i, j));
+                //rel.addView(new TextViewTouch(this, i*ROWS+j+2, i, j));
                 //Log.d("added", i + " " + j);
             }
         }

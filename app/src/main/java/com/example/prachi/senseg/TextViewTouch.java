@@ -1,7 +1,11 @@
 package com.example.prachi.senseg;
 
+import android.content.ClipData;
+import android.content.ClipDescription;
 import android.content.Context;
 import android.util.Log;
+import android.view.DragEvent;
+import android.view.View;
 import android.widget.TextView;
 import android.view.MotionEvent;
 import com.senseg.haptics.Grain;
@@ -15,90 +19,63 @@ import static com.example.prachi.senseg.DisplayButton.*;
 public class TextViewTouch extends TextView {
     public float intensity;
     public boolean pressed = false;
+    public String grainName;
     public Grain grain;
-    public int grain_number;
-    public int xcoord;
-    public int ycoord;
 
-    //contains all the views ever created
-    public static TextViewTouch[] views = new TextViewTouch[ROWS*COLS];
-    public static int viewsindex = 0;
-    public static TextViewTouchListener listener = new TextViewTouchListener();
-    public static final int WIDTH = 200;
-    public static final int HEIGHT = 200;
+    //public static TextViewTouchListener listener = new TextViewTouchListener();
 
-    public TextViewTouch(Context context, int grainNum, int x, int y){
+    public TextViewTouch(Context context, String grainstring, float freq, int width, int height){
         super(context);
-        if (grainNum == 0)
-        {
-            grain = new Grain(grain1);
-            intensity = intensity1;
-            setBackgroundResource(R.drawable.pink);
-        }else if (grainNum == 1){
-            grain = new Grain(grain2);
-            intensity = intensity2;
-            setBackgroundResource(R.drawable.blue);
-        }else{
-            //setBackgroundResource(R.drawable.blue);
-            String s = (grainNum-2+1)+"";
-            setText(s);
-            setTextSize(84.0f);
-            grain = new Grain(grain1);
-            intensity = intensity1;
-            //setBackgroundResource(R.drawable.pink);
-        }
-        //Log.d("str","In constructor");
 
-        this.setWidth(WIDTH);
-        this.setHeight(HEIGHT);
+        this.setWidth(width);
+        this.setHeight(height);
 
-        views[viewsindex] = this;
-        viewsindex++;
-        grain_number = grainNum;
-        xcoord = x;
-        ycoord = y;
+        intensity = freq;
+        grainName = grainstring;
+        grain = new Grain(grainName);
 
-        //this.setOnDragListener(listener);
-        this.setOnTouchListener(listener);
-        //Log.d("str", "C done");
+        setBackgroundResource(R.drawable.blue);
+
+        //this.setOnTouchListener(listener);
+
     }
 
 
     public boolean onTouchEvent(MotionEvent event)
     {
-        if (!pressed)
+        //create clip to drag around
+        String[] mimeTypes = new String[1];
+        mimeTypes[0] = ClipDescription.MIMETYPE_TEXT_PLAIN;
+
+        ClipData newclip = new ClipData("DRAGGING", mimeTypes, new ClipData.Item("DRAGGING"));
+
+        View.DragShadowBuilder blankShadow = new View.DragShadowBuilder();
+
+        startDrag(newclip, blankShadow, null, 0);
+
+        return true;
+    }
+
+    public boolean onDragEvent(DragEvent event)
+    {
+        if (event.getAction() == DragEvent.ACTION_DRAG_STARTED)
+        {
+            //sent to all views to register them for listening
+        }else if (event.getAction() == DragEvent.ACTION_DRAG_ENDED)
+        {
+            unpress();
+        }else if (event.getAction() == DragEvent.ACTION_DRAG_ENTERED)
         {
             press();
-        }else if (pressed)
+        }else if (event.getAction() == DragEvent.ACTION_DRAG_EXITED)
         {
             unpress();
         }
-
-        //check if any others are pressed, and unpress those
-        for (int i = 0; i<views.length; i++)
-        {
-            if (views[i].pressed)
-            {
-                views[i].unpress();
-            }
-        }
-        press();
-
         return true;
     }
 
     public void press()
     {
-        if (grain_number != 0 && grain_number != 1)
-        {
-            pressed = true;
-            float newintensity = intensity*((xcoord%COLS)/COLS);
-            grain.play(1.0f);
-            setTextSize(60.0f);
-            return;
-
-            //setBackgroundResource(0);
-        }
         pressed = true;
         grain.play(intensity);
         setBackgroundResource(0);
@@ -107,20 +84,9 @@ public class TextViewTouch extends TextView {
 
     public void unpress()
     {
-        Log.d("coords",xcoord +" "+ycoord);
         pressed = false;
         grain = null; //hopefully the effect will stop at this point
-        if (grain_number == 0)
-        {
-            grain = new Grain(grain1);
-            setBackgroundResource(R.drawable.pink);
-        }else if (grain_number == 1)
-        {
-            grain = new Grain(grain2);
-            setBackgroundResource(R.drawable.blue);
-        }else{
-            grain = new Grain(grain1);
-            setTextSize(84.0f);
-        }
+        setBackgroundResource(R.drawable.blue);
+        grain = new Grain(grainName);
     }
 }
